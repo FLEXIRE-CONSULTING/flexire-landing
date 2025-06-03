@@ -137,7 +137,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
               </motion.p>
 
               <motion.form 
-                action="http://localhost:5173/api/test-form"
+                action="https://formsubmit.co/info@flexireconsulting.biz"
                 method="POST"
                 className="flex flex-col gap-4"
                 variants={containerVariants}

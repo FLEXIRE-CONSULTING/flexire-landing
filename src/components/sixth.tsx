@@ -133,7 +133,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                 className="font-lexend text-gray-600 mb-8"
                 variants={itemVariants}
               >
-                Ready to transform your business with data? Reach out and we'll get back to you within 24 hours.
+                Readyy to transform your business with data? Reach out and we'll get back to you within 24 hours.
               </motion.p>
 
               <motion.form 

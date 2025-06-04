@@ -145,7 +145,6 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
               >
                 {/* FormSubmit configurations */}
                 <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://flexireconsulting.biz/thank-you" />
 
                 {[ 
                   { type: "text", name: "name", placeholder: "Your Name" },

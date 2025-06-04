@@ -114,7 +114,7 @@ const Sixth = () => {
                     exit={{ opacity: 0 }}
                     className="mb-6 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 font-lexend"
                   >
-                    <p>✓ Message sent successfully!</p>
+                    <p>✓ Message sent successfully!!</p>
                   </motion.div>
                 )}
               </AnimatePresence>

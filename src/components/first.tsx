@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 const First = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,14 +30,15 @@ const First = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false); // Close mobile menu after clicking a link
     }
   };
 
   const navLinks = ['home', 'about', 'services', 'contact'].map((link) => (
     <motion.li
       key={link}
-      className={`px-3 py-2 sm:px-5 sm:py-3 cursor-pointer capitalize font-[Inria_Sans] relative group ${
-        activeSection === link ? 'text-[#1E3A8A]' : 'text-white' // Changed to deep blue
+      className={`px-2 py-1 sm:px-5 sm:py-3 cursor-pointer capitalize font-[Inria_Sans] relative group ${
+        activeSection === link ? 'text-[#1E3A8A]' : 'text-white'
       }`}
       whileHover={{ y: -2 }}
       transition={{ duration: 0.2 }}
@@ -44,7 +46,7 @@ const First = () => {
     >
       {link}
       <div
-        className={`absolute bottom-0 left-0 h-0.5 bg-[#1E3A8A] transition-all duration-300 ${ // Changed to deep blue
+        className={`absolute bottom-0 left-0 h-0.5 bg-[#1E3A8A] transition-all duration-300 ${
           activeSection === link ? 'w-full' : 'w-0 group-hover:w-full'
         }`}
       />
@@ -93,13 +95,13 @@ const First = () => {
 
       {/* Navbar */}
       <motion.nav
-        className='flex justify-between items-center h-[80px] sm:h-[90px] px-6 sm:px-8 md:px-12 lg:px-24 py-4'
+        className='flex justify-between items-center h-[80px] sm:h-[90px] px-4 sm:px-8 md:px-12 lg:px-24 py-4'
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, type: 'spring' }}
       >
         <motion.div
-          className='h-10 sm:h-12'
+          className='h-12 sm:h-14' // Larger logo on mobile
           whileHover={{ scale: 1.05 }}
         >
           <img
@@ -108,26 +110,75 @@ const First = () => {
             className='h-full object-contain'
           />
         </motion.div>
-        <ul className='flex items-center gap-1 sm:gap-3'>{navLinks}</ul>
+        
+        {/* Desktop Navigation */}
+        <ul className='hidden sm:flex items-center gap-1 sm:gap-3'>
+          {navLinks}
+        </ul>
+        
+        {/* Mobile Menu Button */}
+        <button 
+          className='sm:hidden text-white focus:outline-none'
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {isMobileMenuOpen ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
       </motion.nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <motion.div 
+          className="sm:hidden absolute top-[80px] left-0 right-0 bg-black/90 backdrop-blur-md z-50"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ul className="flex flex-col items-center py-4 space-y-4">
+            {navLinks}
+          </ul>
+        </motion.div>
+      )}
 
       {/* Hero Section */}
       <motion.section
-        className='flex flex-col justify-center h-[calc(100vh-90px)] px-6 sm:px-12 lg:px-24 xl:px-32 text-left max-w-6xl'
+        className='flex flex-col justify-center h-[calc(100vh-90px)] px-4 sm:px-12 lg:px-24 xl:px-32 text-left max-w-6xl'
         variants={containerVariants}
         initial='hidden'
         animate='visible'
       >
-        <motion.h1
-          className='font-[Lexend] font-bold text-5xl sm:text-6xl md:text-7xl leading-tight text-white mb-8'
-          variants={itemVariants}
-        >
-          Powering Smarter Decisions.<span></span><br /> {/* Changed to deep blue */}
-          Driven by Data & AI.
-        </motion.h1>
+      <motion.h1
+        className='font-[Lexend] font-bold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-white mb-6 sm:mb-8'
+        variants={itemVariants}
+      >
+        Powering Smarter Decisions.<span></span><br />
+        Driven by Data & AI.
+      </motion.h1>
 
         <motion.p
-          className='font-[Inria_Sans] text-lg text-gray-200 max-w-3xl mb-12 leading-relaxed'
+          className='font-[Inria_Sans] text-base sm:text-lg text-gray-200 max-w-3xl mb-8 sm:mb-12 leading-relaxed'
           variants={itemVariants}
         >
           We unlock actionable insights from your data assets, transforming information into strategic advantage and measurable business outcomes.
@@ -135,7 +186,7 @@ const First = () => {
 
         <motion.div className='flex flex-col sm:flex-row gap-4' variants={itemVariants}>
           <motion.button
-            className='font-[Lexend] font-medium text-white rounded-full bg-[#1E3A8A] px-8 py-4 text-lg capitalize hover:bg-[#2E4A9A] transition-all duration-300 shadow-lg hover:shadow-xl'
+            className='font-[Lexend] font-medium text-white rounded-full bg-[#1E3A8A] px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg capitalize hover:bg-[#2E4A9A] transition-all duration-300 shadow-lg hover:shadow-xl'
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleNavClick('contact')}

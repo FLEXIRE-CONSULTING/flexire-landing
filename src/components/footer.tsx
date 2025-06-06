@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import logoImage from '../assets/FLEXIRE-FOOTER.svg';
+import logoImage from '../assets/logo2.svg';
 import { FaPhone, FaClock, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {

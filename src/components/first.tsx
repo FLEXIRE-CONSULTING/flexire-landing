@@ -164,29 +164,29 @@ const First = () => {
 
       {/* Hero Section */}
       <motion.section
-        className='flex flex-col justify-center h-[calc(100vh-90px)] px-4 sm:px-12 lg:px-24 xl:px-32 text-left max-w-6xl'
+        className='flex flex-col justify-center h-[calc(100vh-90px)] px-6 sm:px-12 md:px-16 lg:px-24 xl:px-32 text-left max-w-6xl mx-auto'
         variants={containerVariants}
         initial='hidden'
         animate='visible'
       >
-      <motion.h2
-         className='font-[Lexend] font-bold text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-4xl leading-tight text-white mb-6 sm:mb-8'
+      <motion.h1
+        className='font-[Lexend] font-bold !text-4xl sm:text-lg md:text-xl lg:text-4xl xl:text-4xl leading-tight text-white mb-2 sm:mb-4'
         variants={itemVariants}
       >
         Powering Smarter Decisions.<br />
         Driven by Data & AI.
-      </motion.h2>
+      </motion.h1>
 
         <motion.p
-          className='font-[Inria_Sans] text-base sm:text-lg text-gray-200 max-w-3xl mb-8 sm:mb-12 leading-relaxed'
+          className='font-[Inria_Sans] text-sm sm:text-base md:text-lg text-gray-200 max-w-3xl mb-6 sm:mb-10 leading-relaxed'
           variants={itemVariants}
         >
           We unlock actionable insights from your data assets, transforming information into strategic advantage and measurable business outcomes.
         </motion.p>
 
-        <motion.div className='flex flex-col sm:flex-row gap-4' variants={itemVariants}>
+        <motion.div className='flex flex-col sm:flex-row gap-3 sm:gap-4' variants={itemVariants}>
           <motion.button
-            className='font-[Lexend] font-medium text-white rounded-full bg-[#1E3A8A] px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg capitalize hover:bg-[#2E4A9A] transition-all duration-300 shadow-lg hover:shadow-xl'
+            className='font-[Lexend] font-medium text-white rounded-full bg-[#1E3A8A] px-5 py-2.5 sm:px-8 sm:py-4 text-sm sm:text-base md:text-lg capitalize hover:bg-[#2E4A9A] transition-all duration-300 shadow-lg hover:shadow-xl'
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleNavClick('contact')}

@@ -169,13 +169,13 @@ const First = () => {
         initial='hidden'
         animate='visible'
       >
-      <motion.h1
-        className='font-[Lexend] font-bold text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-white mb-6 sm:mb-8'
+      <motion.h2
+         className='font-[Lexend] font-bold text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-4xl leading-tight text-white mb-6 sm:mb-8'
         variants={itemVariants}
       >
-        Powering Smarter Decisions.<span></span><br />
+        Powering Smarter Decisions.<br />
         Driven by Data & AI.
-      </motion.h1>
+      </motion.h2>
 
         <motion.p
           className='font-[Inria_Sans] text-base sm:text-lg text-gray-200 max-w-3xl mb-8 sm:mb-12 leading-relaxed'
